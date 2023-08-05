@@ -1,0 +1,109 @@
+<div class="main">
+  <div class="container display-flex">
+    <div class="row">
+      <div class="col-xs-12 col-lg-6 custom-margin">
+        <h1 class="title">Controle de Dívidas</h1>
+        <p class="subTitle">
+          Agora é possível ter o controle das suas dívidas. Saiba o que esta
+          gastando mais e saia do vermelho.
+        </p>
+      </div>
+
+      <div class="col-xs-12 col-lg-6">
+        <div class="fixed-wrapper">
+          <po-container>
+            <po-tabs>
+              <po-tab [p-active]="true" p-label="ENTRAR">
+                <form [formGroup]="formLogin" (ngSubmit)="login()">
+                  <div>
+                    <po-login
+                      name="input"
+                      p-placeholder="Email"
+                      formControlName="email"
+                    >
+                    </po-login>
+                  </div>
+                  <div>
+                    <po-password name="password" formControlName="password">
+                    </po-password>
+                  </div>
+                  <po-divider></po-divider>
+                  <!-- No seu template HTML -->
+                  <div class="d-grid gap-2">
+                    <po-button
+                      class="d-grid gap-2"
+                      p-label="LOGAR"
+                      (p-click)="login()"
+                      [p-disabled]="formLogin.invalid"
+                    >
+                    </po-button>
+                    <div>
+                      <po-loading-overlay
+                        [hidden]="!isLoading"
+                      ></po-loading-overlay>
+                    </div>
+                  </div>
+
+                  <p class="text-custom">
+                    Se você ainda não tiver os dados de login, será necessário
+                    realizar um cadastro.
+                  </p>
+                </form>
+              </po-tab>
+
+              <po-tab [p-active]="true" p-label="CADASTRAR">
+                <form
+                  [formGroup]="formRegister"
+                  (ngSubmit)="openDialogRegister()"
+                >
+                  <div>
+                    <po-input
+                      formControlName="name"
+                      name="input"
+                      p-placeholder="Nome"
+                    >
+                    </po-input>
+                  </div>
+
+                  <div>
+                    <po-input
+                      formControlName="email"
+                      name="input"
+                      p-placeholder="Email"
+                    >
+                    </po-input>
+                  </div>
+
+                  <div>
+                    <po-number
+                      name="number"
+                      formControlName="age"
+                      p-placeholder="idade"
+                      [p-min]="16"
+                      [p-max]="99"
+                      p-error-pattern="Cadastro apenas para idade de 16 anos ou mais "
+                      p-clean="true"
+                    >
+                    </po-number>
+                    <po-divider></po-divider>
+                  </div>
+
+                  <div>
+                    <po-button
+                      class="d-grid gap-2"
+                      type="submit"
+                      (p-click)="openDialogRegister()"
+                      p-label="CONTINUAR CADASTRO"
+                      [p-disabled]="formRegister.invalid"
+                    >
+                    </po-button>
+                  </div>
+                </form>
+              </po-tab>
+            </po-tabs>
+          </po-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

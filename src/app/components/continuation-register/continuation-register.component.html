@@ -1,0 +1,72 @@
+<h1>Continue seu cadastro!</h1>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div>
+    <po-loading-overlay [hidden]="isHideLoading"></po-loading-overlay>
+  </div>
+  <div>
+    <po-input name="input" formControlName="name" p-placeholder="Nome"  p-readonly="true">
+    </po-input>
+  </div>
+
+  <div>
+    <po-input name="email" formControlName="email" p-placeholder="Email"  p-readonly="true">
+    </po-input>
+  </div>
+
+  <div>
+    <po-number name="number" formControlName="age" p-placeholder="idade" p-readonly="true">
+    </po-number>
+  </div>
+  <po-divider></po-divider>
+
+  <div class="image-block">
+    <po-avatar [p-src]="isDefault ? isDefaultImage : preview" p-size="lg">
+    </po-avatar>
+  </div>
+
+  <label for="basic-url">Adicione uma foto ao perfil</label>
+  <div class="input-group mb-3">
+    <input
+      type="file"
+      class="form-control"
+      aria-label="imgProfile"
+      aria-describedby="imgProfile"
+      accept="image/png, image/jpeg"
+      (change)="onChange($event)"
+      required
+    />
+  </div>
+
+  <div>
+    <po-password
+      name="password"
+      formControlName="password"
+      p-placeholder="Senha"
+      p-error-pattern="Senha deve conter pelo menos 6 caracteres, uma letra maiúscula e um número"
+      p-pattern="^(?=.*[A-Z])(?=.*\d).{6,}$"
+      p-required="true"
+    >
+    </po-password>
+  </div>
+
+  <div>
+    <po-password
+      name="confirmPassword"
+      formControlName="confirmPassword"
+      p-placeholder="Confirme sua senha"
+      p-error-pattern="Senha deve conter pelo menos 6 caracteres, uma letra maiúscula e um número"
+      p-pattern="^(?=.*[A-Z])(?=.*\d).{6,}$"
+      p-required="true"
+    >
+    </po-password>
+    <br />
+    <div>
+      <p *ngIf="form.controls['confirmPassword'].hasError('equalsTo')" class="warn">As senhas não são iguais!</p>
+    </div>
+  </div>
+
+  <div >
+    <po-button class="d-grid gap-2"  (p-click)="submit()" p-label="FINALIZAR CADASTRO"> </po-button>
+  </div>
+</form>
+
