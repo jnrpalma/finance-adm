@@ -1,26 +1,24 @@
 <div class="container">
   <app-card-view>
     <app-months-revenues></app-months-revenues>
-    <div *ngIf="!emptyResult && !loading">
-      <br>
-      <label class="mat-label"><strong>Encontrar Receita:</strong></label>
-      <input
-        matInput
-        placeholder="Pesquisar Receita"
+    <div *ngIf="!emptyResult && !loading" style="display: flex; justify-content: space-between; align-items: center;">
+     
+      <po-input 
+        p-label="Encontrar Receita:"
+        name="input"
+        p-placeholder="Pesquisar receita"
         (keyup)="applyFilter($event)"
-        appInputWidth
-      />
+        style="flex: 0 0 70%;"
+      ></po-input>
     </div>
-  
     <po-button
     class="btn-default"
     p-kind="primary"
     p-label="Adicionar receita"
     (p-click)="openDialog()"
-    >"
-    
+    style="flex: 0 0 30%;"
     >
-
+    
 
     </po-button>
     <div class="center custom-position">
