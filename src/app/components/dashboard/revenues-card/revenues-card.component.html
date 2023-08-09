@@ -1,6 +1,7 @@
 <div *ngIf="revenuesTotal">
-  <mat-card class="card">
+  <po-widget>
     <p>{{revenuesTotal.title}}</p>
     <h1>{{revenuesTotal.value | currency: "BRL": 'symbol': '1.2-2'}}</h1>
-  </mat-card>
+  </po-widget>
+
 </div>

@@ -24,6 +24,7 @@
     <po-table
     [p-columns]="columns"
     [p-height]="350"
+    [p-selectable]="true"
     [p-items]="dataSource.data" 
     *ngIf="!loading && !emptyResult"
     [p-show-more-disabled]="false" 
