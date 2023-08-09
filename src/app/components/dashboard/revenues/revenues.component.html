@@ -18,73 +18,19 @@
     (p-click)="openDialog()"
     style="flex: 0 0 30%;"
     >
-    
-
     </po-button>
     <div class="center custom-position">
       <mat-spinner *ngIf="loading"></mat-spinner>
     </div>
     <div class="display"></div>
-    <table
-      mat-table
-      class="mat-elevation-z8"
-      *ngIf="!loading && !emptyResult"
-      [dataSource]="dataSource"
-    >
-      <ng-container matColumnDef="tipoReceita">
-        <th mat-header-cell *matHeaderCellDef>Tipo de Receita</th>
-        <td mat-cell *matCellDef="let element">
-          {{element.typeRevenue}}
-        </td>
-      </ng-container>
+    <po-table
+    [p-height]="350"
+    [p-columns]="columns"
+    [p-items]="dataSource.data" 
+    *ngIf="!loading && !emptyResult"
+    [p-show-more-disabled]="false" 
+></po-table>
 
-      <ng-container matColumnDef="valor">
-        <th mat-header-cell *matHeaderCellDef>Valor</th>
-        <td mat-cell *matCellDef="let element">
-          {{element.value | currency: "BRL": "symbol": "1.2-2"}}
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="dataEntrada">
-        <th mat-header-cell *matHeaderCellDef>Data de Entrada</th>
-        <td mat-cell *matCellDef="let element">
-          {{element.dateEntry | date: "dd/MM/yyyy"}}
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="_id">
-        <th mat-header-cell *matHeaderCellDef>Id</th>
-        <td mat-cell *matCellDef="let element">
-          {{element._id | shortener}}
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="acoes">
-        <th mat-header-cell *matHeaderCellDef style="width: 7%">Ações</th>
-        <td mat-cell *matCellDef="let element">
-          <div *ngFor="let img of element.actions; let i = index">
-            <img
-              class="image"
-              [src]="img"
-              (click)="selectAction(img, element)"
-              alt=""
-            />
-          </div>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
-
-    <mat-paginator
-      *ngIf="!emptyResult && !loading"
-      #paginator
-      [length]="arrRevenues.length"
-      [pageSize]="3"
-      [pageSizeOptions]="[3, 5, 10, 15, 25, 100]"
-    >
-    </mat-paginator>
     <ng-container *ngIf="emptyResult && !loading">
       <div class="container">
         <div class="center">

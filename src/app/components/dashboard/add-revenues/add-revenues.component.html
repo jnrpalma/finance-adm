@@ -16,44 +16,24 @@
   </div>
 
   <div class="form-group">
-    <label for="value">Valor</label>
-    <input
-      type="text"
-      class="form-control"
-      name="value"
-      id="value"
-      aria-describedby="value"
-      autocomplete="off"
-      formControlName="value"
-      currencyMask
-    />
+    <po-number
+    p-label="Valor"
+    name="value"
+    id="value"
+    aria-describedby="value"
+    autocomplete="off"
+    formControlName="value"
+    >
+    </po-number>
   </div>
   <div class="form-group">
-    <label for="dateEntry">Data de Entrada</label>
-    <input
-      type="date"
-      class="form-control"
-      id="dateEntry"
-      name="dateEntry"
-      aria-describedby="dateEntry"
-      formControlName="dateEntry"
-      onkeydown="return false"
-    />
+    <po-datepicker  id="dateEntry" onkeydown="return false" name="dateEntry" formControlName="dateEntry" aria-describedby="dateEntry" p-label="Data de Entrada"> </po-datepicker>
   </div>
 
   <div class="form-group">
     <div class="form-check">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        value="fixedRevenue"
-        name="fixedRevenue"
-        id="fixedRevenue"
-        formControlName="fixedRevenue"
-      />
-      <label class="form-check-label" for="fixedRevenue"> Receita Fixa </label>
+      <po-checkbox name="fixedRevenue" formControlName="fixedRevenue" id="fixedRevenue"  value="fixedRevenue" p-label="Receita Fixa"> </po-checkbox>
     </div>
   </div>
-
-  <button class="btn btn-primary" type="submit">Adicionar Receita</button>
+  <po-button p-label="Adicionar Receita" (p-click)="submit()"> </po-button>
 </form>

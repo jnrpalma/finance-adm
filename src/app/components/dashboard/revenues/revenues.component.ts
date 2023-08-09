@@ -9,6 +9,7 @@ import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { StoreService } from 'src/app/shared/store.service';
 import { AddRevenuesComponent } from '../add-revenues/add-revenues.component';
 import { UpdateRevenuesComponent } from '../update-revenues/update-revenues.component';
+import { PoTableColumn } from '@po-ui/ng-components';
 
 @Component({
   selector: 'app-revenues',
@@ -22,13 +23,15 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
   emptyResult = false;
   arrRevenues: any[] = [];
   public dataSource = new MatTableDataSource<any>();
-  displayedColumns: string[] = [
-    'tipoReceita',
-    'valor',
-    'dataEntrada',
-    '_id',
-    'acoes'
-  ]
+  
+  columns: Array<PoTableColumn> = [
+    { property: 'typeRevenue', label: 'Tipo de Receita' },
+    { property: 'value', label: 'Valor', type: 'currency', format: 'BRL' },
+    { property: 'dateEntry', label: 'Data de Entrada', type: 'date', format: 'dd/MM/yyyy' },
+    { property: '_id', label: 'Id' },
+    { property: 'actions', label: 'Ações', type: 'action', action: this.selectAction.bind(this) }
+  ];
+  
   @ViewChild('paginator') paginator!: MatPaginator;
   totalRevenues: any;
   constructor(private dialog: MatDialog,
@@ -86,6 +89,8 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
         res.result.forEach((element: any) => {
           arr.push(element.user.month.listMonth);
         })
+
+        console.log(arr);
 
         this.totalExpense();
 

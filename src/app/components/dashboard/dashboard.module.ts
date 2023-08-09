@@ -27,7 +27,7 @@ import { UpdateRevenuesComponent } from './update-revenues/update-revenues.compo
 import { AddDebtsComponent } from './add-debts/add-debts.component';
 import { UpdateDebtsComponent } from './update-debts/update-debts.component';
 import { MonthsDebtsComponent } from './months-debts/months-debts.component';
-import { PoButtonModule, PoModule } from '@po-ui/ng-components';
+import { PoButtonModule, PoFieldModule, PoModule, PoTableModule } from '@po-ui/ng-components';
 
 registerLocaleData(localePt, 'pt')
 
@@ -71,7 +71,9 @@ export const CustomCurrencyMaskConfig = {
     FormsModule,
     CurrencyMaskModule,
     PoButtonModule,
-    PoModule
+    PoModule,
+    PoFieldModule,
+    PoTableModule 
   ],
   providers: [
     {

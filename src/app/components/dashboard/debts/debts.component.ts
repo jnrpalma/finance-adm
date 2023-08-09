@@ -8,6 +8,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { ListDebts } from 'src/app/interfaces/listDebts';
 import { StoreService } from 'src/app/shared/store.service';
 import { UpdateDebtsComponent } from '../update-debts/update-debts.component';
+import { PoTableColumn } from '@po-ui/ng-components';
 
 @Component({
   selector: 'app-debts',
@@ -23,14 +24,16 @@ export class DebtsComponent implements OnInit, AfterViewInit {
   public dataSource = new MatTableDataSource<any>();
   @ViewChild('paginator') paginator!: MatPaginator;
   monthSelelected!: string;
-  displayedColumns: string[] = [
-    'divida',
-    'categoria',
-    'valor',
-    'dataVencimento',
-    '_id',
-    'acoes'
-  ]
+
+  columns: Array<PoTableColumn> = [
+    { property: 'debt', label: 'Dívida' },
+    { property: 'category', label: 'Categoria' },
+    { property: 'value', label: 'Valor', type: 'currency', format: 'BRL' },
+    { property: 'expirationDate', label: 'Data de Vencimento', type: 'date', format: 'dd/MM/yyyy' },
+    { property: '_id', label: 'Id' }, // Ajuste de acordo com sua necessidade
+    { property: 'actions', label: 'Ações', type: 'action', action: this.selectAction.bind(this) } // Aqui, você pode personalizar o tipo de ação conforme necessário
+  ];
+  
   constructor(private dialog: MatDialog,
     private localStorageService: LocalstorageService,
     private apiService: ApiService,
