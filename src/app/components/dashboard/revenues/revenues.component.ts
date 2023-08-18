@@ -90,8 +90,6 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
           arr.push(element.user.month.listMonth);
         })
 
-        console.log(arr);
-
         this.totalExpense();
 
       }
@@ -103,6 +101,7 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
       }, 2000);
 
     })
+   // Adicione este log para verificar o mês selecionado
   }
 
   openDialog() {
@@ -116,8 +115,15 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
   }
 
   applyFilter(event: any) {
-    const filterValues = (event.target as HTMLInputElement).value
-    this.dataSource.filter = filterValues.trim().toLocaleLowerCase();
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+  
+    this.dataSource.filter = filterValue;
+
+    if (!filterValue) {
+      this.dataSource.data = this.arrRevenues;
+    } else {
+      this.dataSource.data = this.dataSource.filteredData;
+    }
   }
 
   selectAction(action: string, element: any) {
