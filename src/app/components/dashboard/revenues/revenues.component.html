@@ -1,16 +1,8 @@
 <div class="container">
   <app-card-view>
     <app-months-revenues></app-months-revenues>
-    <div *ngIf="!emptyResult && !loading" style="display: flex; justify-content: space-between; align-items: center;">
-     
-      <po-input 
-        p-label="Encontrar Receita:"
-        name="input"
-        p-placeholder="Pesquisar receita"
-        (keyup)="applyFilter($event)"
-        style="flex: 0 0 70%;"
-      ></po-input>
-    </div>
+    <div *ngIf="!emptyResult && !loading"></div>
+   <div  class="btnPositionRight">
     <po-button
     class="btn-default"
     p-kind="primary"
@@ -19,6 +11,8 @@
     style="flex: 0 0 30%;"
     >
     </po-button>
+   </div>
+
     <div class="center custom-position">
       <mat-spinner *ngIf="loading"></mat-spinner>
     </div>

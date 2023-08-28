@@ -1,23 +1,18 @@
 <div class="container">
   <app-card-view>
     <app-months-debts></app-months-debts>
-    <div *ngIf="!emptyResult && !loading" style="display: flex; justify-content: space-between; align-items: center;">
-        <po-input 
-        p-label="Pesquisar Dívida:"
-        name="input"
-        p-placeholder="Pesquisar Dívida"
-        (keyup)="applyFilter($event)"
-        style="flex: 0 0 70%;"
-      ></po-input>
+    <div *ngIf="!emptyResult && !loading">
     </div>
-    <po-button
-    class="btn-default"
-    p-kind="primary"
-    p-label="Adicionar Divida"
-    (p-click)="openDialog()"
-    style="flex: 0 0 30%;"
-    >
-    </po-button>
+    <div class="btnPositionRight" >
+      <po-button
+      class="btn-default"
+      p-kind="primary"
+      p-label="Adicionar Divida"
+      (p-click)="openDialog()"
+      style="flex: 0 0 30%;"
+      >
+      </po-button>
+    </div>
     <div class="center custom-position">
       <mat-spinner *ngIf="loading"></mat-spinner>
     </div>

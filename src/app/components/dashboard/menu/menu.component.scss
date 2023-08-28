@@ -1,5 +1,5 @@
 nav {
-  background-color: #0d6efd;
+  background-color: #c2c2c2;
   height: 85px;
 
   .float-left {
@@ -35,4 +35,10 @@ nav {
     color: white;
     cursor: pointer;
   }
+
+  po-link {
+    --text-color: #000000;
+    --text-color-visited: #080f78;
+    }
+
 }

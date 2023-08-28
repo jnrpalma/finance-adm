@@ -43,5 +43,13 @@
   .animationCard {
     transition: width 2s;
   }
+
+  .btnPositionRight{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+  
 }
 

@@ -1,17 +1,13 @@
-<form [formGroup]="form"
-(ngSubmit)="submit()">
+<form [formGroup]="form" (ngSubmit)="submit()">
   <div class="form-group">
-    <label for="debt">Dívida</label>
-    <input
-      type="text"
-      class="form-control"
+    <po-input
       id="debt"
       name="debt"
       aria-describedby="debt"
-      autocomplete="off"
       formControlName="debt"
-    />
-    <div class="error"></div>
+      p-label="Divida"
+    >
+    </po-input>
   </div>
   <div class="form-group">
     <label for="category">Categoria</label>
@@ -29,41 +25,35 @@
     </select>
   </div>
   <div class="form-group">
-    <label for="value">Valor</label>
-    <input
-      type="text"
-      class="form-control"
+    <po-decimal
+      p-label="Valor"
       id="value"
       name="value"
       aria-describedby="value"
-      autocomplete="off"
       formControlName="value"
-      currencyMask
-    />
+      autocomplete="off"
+    >
+    </po-decimal>
   </div>
   <div class="form-group">
-    <label for="expirationDate">Data de Vencimento</label>
-    <input
-      type="date"
-      class="form-control"
+    <po-datepicker
+      p-label="Data de Entrada"
       id="expirationDate"
       name="expirationDate"
       aria-describedby="expirationDate"
       formControlName="expirationDate"
-    />
+    ></po-datepicker>
   </div>
 
   <div class="form-group">
     <div class="form-check">
-      <input
-        class="form-check-input"
-        type="checkbox"
+      <po-checkbox 
         value="fixedDebt"
         id="fixedDebt"
         formControlName="fixedDebt"
-      />
-      <label class="form-check-label" for="fixedDebt"> Dívida Fixa </label>
+        p-label="Dívida Fixa"> 
+        </po-checkbox>
     </div>
   </div>
-  <button class="btn btn-primary">Adicionar Dívida</button>
+  <po-button p-label="Adicionar Dívida" (p-click)="submit()"> </po-button>
 </form>
